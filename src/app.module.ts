@@ -6,7 +6,6 @@ import { mongoConfig } from './config/database.config';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConfig } from './config/jwt.config';
 import { AuthModule } from './auth/auth.module';
-import { EmployeeModule } from './employee/employee.module';
 import { LeaveModule } from './leave/leave.module';
 import { HolidayModule } from './holiday/holiday.module';
 import { SalaryModule } from './salary/salary.module';
@@ -37,7 +36,6 @@ import { AttendanceModule } from './attendance/attendance.module';
             useFactory: jwtConfig,
         }),
         AuthModule,
-        EmployeeModule,
         LeaveModule,
         HolidayModule,
         SalaryModule,
