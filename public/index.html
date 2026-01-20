@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employee Management System – API Documentation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  .section-title { font-size: 1.8rem; font-weight: 700; color: #fff; }
+  .code-block { background: #0f172a; color: #d1d5db; padding: 1rem; border-radius: .6rem; font-family: monospace; }
+</style>
+</head>
+
+<body class="bg-gradient-to-b from-black via-slate-900 to-black text-gray-200 min-h-screen p-8">
+
+<div class="max-w-7xl mx-auto space-y-14">
+
+<!-- HEADER -->
+<header class="text-center space-y-4">
+  <img src="https://nestjs.com/img/logo-small.svg" class="mx-auto w-24" />
+  <h1 class="text-5xl font-bold text-white">Employee Management System</h1>
+  <p class="text-gray-400">NestJS Modular Architecture • JWT Auth • Role Based Access Control</p>
+  <a class="text-indigo-400 hover:underline" target="_blank"
+     href="https://documenter.getpostman.com/view/51466978/2sBXVihqWQ">
+    📘 Postman API Collection
+  </a>
+</header>
+
+<!-- ARCHITECTURE MODULES -->
+<section>
+  <h2 class="section-title mb-6">System Architecture – Modules</h2>
+
+  <div id="modules" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- INTERACTION FLOW -->
+<section class="bg-white/5 border border-white/10 rounded-xl p-6">
+  <h2 class="section-title mb-4">Module Interaction Flow</h2>
+
+  <ul class="list-disc list-inside text-gray-300 space-y-1">
+    <li>Auth → JWT Guards → All Modules</li>
+    <li>Users → Attendance, Leave, Salary</li>
+    <li>Holiday → Leave, Salary</li>
+    <li>Attendance → Salary</li>
+  </ul>
+</section>
+
+<!-- API DOCUMENTATION -->
+<section>
+  <h2 class="section-title mb-4">Authentication – Auth Module</h2>
+
+  <p class="mb-2">All secured APIs require JWT token:</p>
+
+  <div class="code-block mb-4">
+Authorization: Bearer &lt;JWT_TOKEN&gt;
+  </div>
+
+  <p class="text-indigo-400">POST /auth/login</p>
+  <div class="code-block mt-2">
+{
+  "email": "user@example.com",
+  "password": "123456"
+}
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title mb-4">Users Module</h2>
+
+  <p class="text-indigo-400">GET /users</p>
+  <div class="code-block mt-2 mb-4">GET /users</div>
+
+  <p class="text-indigo-400">POST /users</p>
+  <div class="code-block mt-2">
+{
+  "name": "John Doe",
+  "email": "john@test.com",
+  "role": "EMPLOYEE"
+}
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title mb-4">Attendance Module</h2>
+  <div class="code-block">POST /attendance/start</div>
+</section>
+
+<section>
+  <h2 class="section-title mb-4">Leave Module</h2>
+  <div class="code-block">
+POST /leave/apply
+{
+  "fromDate": "2026-01-25",
+  "toDate": "2026-01-26",
+  "reason": "Personal"
+}
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title mb-4">Holiday Module</h2>
+  <div class="code-block">GET /holiday/list</div>
+</section>
+
+<section>
+  <h2 class="section-title mb-4">Salary Module</h2>
+  <div class="code-block">GET /salary/user/:id</div>
+</section>
+
+<!-- FOLDER STRUCTURE -->
+<section class="bg-white/5 border border-white/10 rounded-xl p-6">
+<h2 class="section-title mb-4">Project Folder Structure</h2>
+
+<div class="code-block overflow-x-auto">
+<pre>src/
+├── main.ts
+├── app.module.ts
+│
+├── config/
+│   ├── database.config.ts
+│   ├── jwt.config.ts
+│   └── app.config.ts
+│
+├── common/
+│   ├── decorators/
+│   ├── guards/
+│   ├── enums/
+│   ├── dto/
+│   └── constants/
+│
+├── modules/
+│   ├── auth/
+│   ├── users/
+│   ├── attendance/
+│   ├── leave/
+│   ├── holiday/
+│   └── salary/
+</pre>
+</div>
+</section>
+
+<!-- README CONTENT -->
+<section>
+<h2 class="section-title mb-4">Project Setup</h2>
+<div class="code-block">npm install</div>
+</section>
+
+<section>
+<h2 class="section-title mb-4">Run Project</h2>
+<div class="code-block">
+npm run start
+npm run start:dev
+npm run start:prod
+</div>
+</section>
+
+<section>
+<h2 class="section-title mb-4">Testing</h2>
+<div class="code-block">
+npm run test
+npm run test:e2e
+npm run test:cov
+</div>
+</section>
+
+<section>
+<h2 class="section-title mb-4">Deployment</h2>
+<p>Supports NestJS Mau & AWS deployment.</p>
+<div class="code-block">
+npm install -g @nestjs/mau
+mau deploy
+</div>
+</section>
+
+<section>
+<h2 class="section-title mb-4">Resources</h2>
+<ul class="list-disc list-inside text-gray-300 space-y-1">
+<li>NestJS Documentation</li>
+<li>Discord Support</li>
+<li>NestJS Courses</li>
+<li>Devtools</li>
+<li>Enterprise Support</li>
+</ul>
+</section>
+
+<footer class="text-center text-gray-500 pt-10">
+© 2026 Employee Management System – Built with NestJS
+</footer>
+
+</div>
+
+<script>
+const modules = [
+  { name: 'Auth Module', color: 'blue', icon: 'lock', items: ['AuthController','AuthService','JWT Strategy','DTOs','Guards'] },
+  { name: 'Users Module', color: 'emerald', icon: 'users', items: ['UsersController','UsersService','UsersRepository','User Schema','Roles'] },
+  { name: 'Attendance Module', color: 'purple', icon: 'clock', items: ['Controller','Service','Repository','Schema'] },
+  { name: 'Leave Module', color: 'orange', icon: 'calendar', items: ['Controller','Service','Repository','Schema'] },
+  { name: 'Holiday Module', color: 'yellow', icon: 'sun', items: ['Controller','Service','Repository','Schema'] },
+  { name: 'Salary Module', color: 'pink', icon: 'wallet', items: ['Controller','Service','Repository','Schema'] },
+];
+
+const modulesEl = document.getElementById('modules');
+
+modules.forEach(m => {
+  const div = document.createElement('div');
+  div.className = 'bg-white/5 border border-white/10 rounded-2xl p-5';
+
+  div.innerHTML = `
+    <div class="flex items-center gap-3 mb-3">
+      <i data-lucide="${m.icon}" class="text-${m.color}-400"></i>
+      <h3 class="text-xl font-bold text-white">${m.name}</h3>
+    </div>
+    ${m.items.map(i => `<div class="text-sm bg-${m.color}-400/10 px-3 py-1 rounded mb-1">${i}</div>`).join('')}
+  `;
+  modulesEl.appendChild(div);
+});
+
+lucide.createIcons();
+</script>
+
+</body>
+</html>
